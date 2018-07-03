@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_134847) do
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_skills_on_parent_id"
   end
 
   create_table "skills_users", id: false, force: :cascade do |t|
