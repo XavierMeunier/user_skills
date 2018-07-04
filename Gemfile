@@ -63,6 +63,8 @@ group :test do
   # Readable bdd tests
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  # One liner common test functionnalities
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
