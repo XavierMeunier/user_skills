@@ -2,7 +2,29 @@
 
 <h1>Home</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Points</th>
+      <th>Users Count</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @parent_skills_info.each do |parent_skill, infos| %>
+      <tr>
+        <td><%= parent_skill.id %></td>
+        <td><%= parent_skill.name %></td>
+        <td><%= infos[:points] %></td>
+        <td><%= infos[:users_count] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <%= link_to 'Manage Skills', skills_path %>
 <%= link_to 'Manage Users',  users_path  %>
