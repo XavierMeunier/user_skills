@@ -10,7 +10,7 @@ class ParentSkillInfoService
 private
 
   def get_parent_skills_info
-    users_grouped_by_skills = User.all
+    users_grouped_by_skills = User.with_skills
                                   .select(:id, :points)
                                   .includes("skills")
                                   .group_by{|user| user.skills.first.parent || user.skills.first}
