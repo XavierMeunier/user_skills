@@ -18,5 +18,4 @@ cucumber:
 production:
   <<: *default
   database: sport_production
-  username: xam
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  url: <%= ENV["DATABASE_URL"] %>
