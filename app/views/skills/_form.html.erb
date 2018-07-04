@@ -21,6 +21,18 @@
     <%= form.select(:parent_id, options_from_collection_for_select(@available_parents, :id, :name, @skill.parent_id), {:include_blank => "None", :class => "form-control"}) %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :user_ids, check_available_users_text(@users) %>
+    <ul>
+    <%= form.collection_check_boxes :user_ids, @users, :id, :points do |b| %>
+        <li>
+          <%= b.label %>
+          <%= b.check_box %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
   <%= form.submit "Save", :class => "btn btn-primary" %>
 
 <% end %>

@@ -1,6 +1,7 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
   before_action :set_available_parents, only: [:new, :edit, :update, :create]
+  before_action :set_users, only: [:new, :edit, :update, :create]
 
   # GET /skills
   # GET /skills.json
@@ -74,10 +75,14 @@ class SkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
-      params.require(:skill).permit(:name, :parent_id)
+      params.require(:skill).permit(:name, :parent_id, user_ids: [])
     end
 
     def set_available_parents
       @available_parents = @skill ? Skill.no_parent.where.not(id: @skill.id) : Skill.no_parent
+    end
+
+    def set_users
+      @users = @skill ? User.without_skills + @skill.users : User.without_skills
     end
 end
