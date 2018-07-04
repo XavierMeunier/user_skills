@@ -7,7 +7,9 @@ class Skill < ApplicationRecord
   # Currently limited to one skill by user in database
   has_and_belongs_to_many :users
 
-  validates :name, presence: true, allow_blank: false
+  scope :no_parent, -> { where(parent: nil) }
+
+  validates :name, presence: true, allow_blank: false, uniqueness: true
   validate :child_depth
 
 private
