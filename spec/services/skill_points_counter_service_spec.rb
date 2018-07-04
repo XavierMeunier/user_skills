@@ -29,12 +29,14 @@ RSpec.describe SkillPointsCounterService do
       expect(@skill_point_counter.call).to eq(skill_points_user)
     end
 
-    it "does not cout other skills' users' point" do
+    it "does not count other skills' users' point" do
       skill2.users << user3
+
       skill_points_users = user1.points + user2.points
+      expect(@skill_point_counter.call).to eq(skill_points_users)
+
       not_skill_points_users = skill_points_users + user3.points
       expect(@skill_point_counter.call).to_not eq(not_skill_points_users)
-      expect(@skill_point_counter.call).to eq(skill_points_users)
     end
 
     # Deeper levels of children has been studied but judged as not relevant in this exercise
