@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
     <title>Sport</title>
     <%= csrf_meta_tags %>
@@ -8,8 +8,22 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="container">
+
+      <div class="row">
+        <h1><%= yield(:h1 ) %></h1>
+      </div>
+
+      <div class="row">
+        <%= link_to 'Home',           root_path,    :class => "btn btn-secondary" %>
+        <%= link_to 'Manage Skills',  skills_path,  :class => "btn btn-secondary" %>
+        <%= link_to 'Manage Users',   users_path,   :class => "btn btn-secondary" %>
+      </div>
+
+      <br />
+
+      <%= yield %>
+    </div>
   </body>
 </html>
