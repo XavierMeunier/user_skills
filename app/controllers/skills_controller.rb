@@ -1,5 +1,6 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
+  before_action :set_available_parents, only: [:new, :edit, :update, :create]
 
   # GET /skills
   # GET /skills.json
@@ -15,10 +16,12 @@ class SkillsController < ApplicationController
   # GET /skills/new
   def new
     @skill = Skill.new
+    @available_parents = Skill.no_parent
   end
 
   # GET /skills/1/edit
   def edit
+    @available_parents = Skill.no_parent.where.not(id: @skill.id)
   end
 
   # POST /skills
@@ -31,6 +34,7 @@ class SkillsController < ApplicationController
         format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
         format.json { render :show, status: :created, location: @skill }
       else
+        @available_parents = Skill.no_parent
         format.html { render :new }
         format.json { render json: @skill.errors, status: :unprocessable_entity }
       end
@@ -45,6 +49,7 @@ class SkillsController < ApplicationController
         format.html { redirect_to @skill, notice: 'Skill was successfully updated.' }
         format.json { render :show, status: :ok, location: @skill }
       else
+        @available_parents = Skill.no_parent.where.not(id: @skill.id)
         format.html { render :edit }
         format.json { render json: @skill.errors, status: :unprocessable_entity }
       end
@@ -70,5 +75,9 @@ class SkillsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
       params.require(:skill).permit(:name, :parent_id)
+    end
+
+    def set_available_parents
+      @available_parents = @skill ? Skill.no_parent.where.not(id: @skill.id) : Skill.no_parent
     end
 end

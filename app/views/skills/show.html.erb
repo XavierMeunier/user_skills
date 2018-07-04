@@ -1,14 +1,18 @@
+<% content_for :h1, "Skill" %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @skill.name %>
-</p>
+<div class="jumbotron">
+  <p>
+    <strong>Name:</strong>
+    <%= @skill.name %>
+  </p>
 
-<p>
-  <strong>Parent:</strong>
-  <%= @skill.parent_id %>
-</p>
+  <p>
+    <strong>Parent:</strong>
+    <%= parent_name(@skill) %>
+  </p>
+</div>
 
-<%= link_to 'Edit', edit_skill_path(@skill) %> |
-<%= link_to 'Back', skills_path %>
+<%= link_to 'Edit', edit_skill_path(@skill), :class => "btn btn-warning" %>
+<%= link_to 'Back', skills_path, :class => "btn btn-success " %>

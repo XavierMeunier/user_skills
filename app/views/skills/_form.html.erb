@@ -11,17 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :parent_id %>
-    <%= form.text_field :parent_id %>
+    <%= form.select(:parent_id, options_from_collection_for_select(@available_parents, :id, :name, @skill.parent_id), {:include_blank => "None", :class => "form-control"}) %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Save", :class => "btn btn-primary" %>
+
 <% end %>

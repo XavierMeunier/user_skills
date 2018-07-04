@@ -1,6 +1,9 @@
-<h1>Editing Skill</h1>
+<% content_for :h1, "Editing Skill" %>
 
-<%= render 'form', skill: @skill %>
+<div class="jumbotron">
+  <%= render 'form', skill: @skill %>  
+</div>
 
-<%= link_to 'Show', @skill %> |
-<%= link_to 'Back', skills_path %>
+
+<%= link_to 'Show', @skill, :class => "btn btn-info" %>
+<%= link_to 'Back', skills_path, :class => "btn btn-success" %>
