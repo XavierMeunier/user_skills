@@ -7,5 +7,13 @@ class Skill < ApplicationRecord
   has_and_belongs_to_many :users
 
   validates :name, presence: true, allow_blank: false
+  validate :child_depth
+
+private
+  def child_depth
+    if !parent_id.blank? && !parent.parent.blank?
+      errors.add(:parent, "can't be a child of another skill")
+    end
+  end
 
 end
