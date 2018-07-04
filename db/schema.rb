@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2018_07_03_134847) do
   create_table "skills_users", id: false, force: :cascade do |t|
     t.integer "skill_id", null: false
     t.integer "user_id", null: false
+    t.index ["skill_id", "user_id"], name: "index_skills_users_on_skill_id_and_user_id"
+    t.index ["user_id"], name: "index_skills_users_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
