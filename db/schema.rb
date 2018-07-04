@@ -12,17 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2018_07_03_134847) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "skills", force: :cascade do |t|
     t.string "name"
-    t.integer "parent_id"
+    t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_skills_on_parent_id"
   end
 
   create_table "skills_users", id: false, force: :cascade do |t|
-    t.integer "skill_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "skill_id", null: false
+    t.bigint "user_id", null: false
     t.index ["skill_id", "user_id"], name: "index_skills_users_on_skill_id_and_user_id"
     t.index ["user_id"], name: "index_skills_users_on_user_id", unique: true
   end
