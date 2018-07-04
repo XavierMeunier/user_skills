@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :points %>
     <%= form.text_field :points %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.label :skill_ids %>
+    <%= form.select(:skill_ids, options_from_collection_for_select(@skills, :id, :name, user_skill_id(@user)), {:include_blank => "None", :class => "form-control"}) %>
   </div>
+
+  
+  <%= form.submit "Save", :class => "btn btn-primary" %>
+
 <% end %>

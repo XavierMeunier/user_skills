@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_skill_list, only: [:new, :edit, :update, :create]
 
   # GET /users
   # GET /users.json
@@ -69,6 +70,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:points)
+      params.require(:user).permit(:points, :skill_ids)
+    end
+
+    def set_skill_list
+      @skills = Skill.all
     end
 end

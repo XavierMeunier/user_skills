@@ -1,9 +1,19 @@
+<% content_for :h1, "User" %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Points:</strong>
-  <%= @user.points %>
-</p>
+<div class="jumbotron">
+  <p>
+    <strong>Points:</strong>
+    <%= @user.points %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <p>
+    <strong>Skill:</strong>
+    <%= user_skill_name(@user) %>
+  </p>
+</div>
+
+
+<%= link_to 'Edit', edit_user_path(@user), :class => "btn btn-warning" %>
+<%= link_to 'Back', users_path, :class => "btn btn-success " %>
