@@ -36,6 +36,9 @@ RSpec.describe SkillPointsCounterService do
       expect(@skill_point_counter.call).to_not eq(not_skill_points_users)
       expect(@skill_point_counter.call).to eq(skill_points_users)
     end
+
+    # Deeper levels of children has been studied but judged as not relevant in this exercise
+
   end
 
 end
